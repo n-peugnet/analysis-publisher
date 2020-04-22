@@ -1,5 +1,6 @@
 package dev.gtierney.analysispublisher.reporting;
 
+import dev.gtierney.analysispublisher.reporting.adapters.JUnitAdapter;
 import edu.hm.hafner.analysis.IssueParser;
 import edu.hm.hafner.analysis.parser.CMakeParser;
 import edu.hm.hafner.analysis.parser.CargoCheckParser;
@@ -9,7 +10,6 @@ import edu.hm.hafner.analysis.parser.FindBugsParser;
 import edu.hm.hafner.analysis.parser.FindBugsParser.PriorityProperty;
 import edu.hm.hafner.analysis.parser.GccParser;
 import edu.hm.hafner.analysis.parser.GoLintParser;
-import edu.hm.hafner.analysis.parser.JSLintXmlSaxParser;
 import edu.hm.hafner.analysis.parser.JavaDocParser;
 import edu.hm.hafner.analysis.parser.JavacParser;
 import edu.hm.hafner.analysis.parser.LintParser;
@@ -35,6 +35,7 @@ public interface IssueParserFactoryBuilder {
     builder.add("spotbugs", spotbugs);
     builder.add("findbugs", spotbugs);
     builder.add("checkstyle", CheckStyleParser::new);
+    builder.add("junit", JUnitAdapter::new);
 
     // Rust related parsers.
     builder.add("rustc", CargoCheckParser::new);
